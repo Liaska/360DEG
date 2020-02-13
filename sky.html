@@ -4,11 +4,11 @@
 </head>
 <body style="margin:0px;overflow:hidden;">
 
+    <nav style="color: white; font-size: 25x; z-index: 2; position: absolute; top: 10px; left: 10px;" >Press <br> S - for speed up <br> D - for speed down </nav>
 
 <div id="game">
 <canvas id="canvas" width="800" height="600" style="background:#000000;vertical-align:top;"></canvas>
 </div>
-
 
 <script type="text/javascript" src="js/three.js"></script>
 <script type="text/javascript" src="js/FirstPersonControls.js"></script>
@@ -18,6 +18,7 @@
 
 
 "use strict";
+
 
 
 var scene, camera, renderer, controls;
@@ -53,7 +54,7 @@ renderer.gammaOutput=true;
 
 controls=new THREE.FirstPersonControls(camera,renderer.domElement);
 controls.movementSpeed=200;
-controls.lookSpeed=0.1;
+controls.lookSpeed=0.03;
 controls.lookVertical=true;
 controls.lon=-1.5*180/Math.PI;
 
@@ -75,6 +76,16 @@ renderer.render(scene,camera);
 
 
 loop();
+
+document.addEventListener("keypress", function (e) {
+    console.log(e.which);
+    if(e.which == 115) {
+        controls.lookSpeed+=0.005;
+    }
+    if(e.which == 100) {
+        controls.lookSpeed-=0.005;
+    }
+})
 
 </script>
 </body>

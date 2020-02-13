@@ -4,6 +4,7 @@
 </head>
 <body style="margin:0px;overflow:hidden;">
 
+    <nav style="color: white; font-size: 25x; z-index: 2; position: absolute; top: 10px; left: 10px;" >Press <br> S - for speed up <br> D - for speed down </nav>
 
 <div id="game">
 <canvas id="canvas" width="800" height="600" style="background:#000000;vertical-align:top;"></canvas>
@@ -77,6 +78,16 @@ renderer.render(scene,camera);
 
 
 loop();
+
+document.addEventListener("keypress", function (e) {
+    console.log(e.which);
+    if(e.which == 115) {
+        controls.lookSpeed+=0.005;
+    }
+    if(e.which == 100) {
+        controls.lookSpeed-=0.005;
+    }
+})
 
 </script>
 </body>
